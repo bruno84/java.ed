@@ -28,9 +28,22 @@ public class BST
     private int size;
     
     
+    // Construtor
+    public BST() {
+    	this.root = null;
+    	this.size = 0;
+    }
+    
+    // MÉTODOS:
+    
+    // Retorna quantidade de nós
+	public int getSize() {
+		return size;
+	}
+	
+    
     // É vazia?
-    public boolean isEmpty() 
-    {
+    public boolean isEmpty() {
         return root == null;
     }
 	
@@ -318,8 +331,6 @@ public class BST
     }
 
 
-	public int getSize() {
-		return size;
-	}
+
     
 }
