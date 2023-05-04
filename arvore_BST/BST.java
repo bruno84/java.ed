@@ -48,6 +48,152 @@ public class BST
     }
 	
     
+    // Quantidade de nós para que a árvore seja completa
+	public int nodesComplete(int h) {
+		return (int) (Math.pow(2,h+1) - 1);
+	}
+	
+	
+    // Retorna altura
+    public int height() {
+        return height(root);
+    }
+    // Recursiva
+    private int height(Node node) 
+    {
+        if(node == null) {
+        	return -1;
+        }
+        else return 1 + Math.max(height(node.left), height(node.right));
+    }
+	
+    
+    // Retorna referencia para o nó pesquisado
+    public Node search(int key) 
+    {    
+        Node p = root;
+            
+        while (p != null) 
+        {   
+            if (p.value == key) {
+            	return p;
+            }
+            
+            if (key < p.value) {
+            	p = p.left;
+            }
+            
+            if (key > p.value) {
+            	p = p.right;
+            }
+        }
+            
+        return null;
+    }
+    
+    
+    // Exibe elementos ordenados
+    public void sortInOrder() {
+        sortInOrder( root );
+        System.out.println();
+    }
+    // Recursivo
+    private void sortInOrder(Node node) 
+    {
+        if (node != null) {
+            sortInOrder(node.left);
+            System.out.print(node.value + " ");
+            sortInOrder(node.right);
+        }
+    }
+    
+    
+    // Retorna menor elemento
+    public Node min() 
+    {
+        if (isEmpty()) {
+        	return null;
+        }
+        return min(root);
+    }
+    // Recursivo
+    private Node min(Node node) 
+    {
+        if (node.left == null) {
+        	return node;
+        }
+        else {
+        	return min(node.left);
+        }
+    }
+
+    
+    // Retorna maior elemento
+    public Node max() 
+    {
+        if (isEmpty()) {
+        	return null;
+        }
+        return max(root);
+    }
+    // Recursivo
+    private Node max(Node node) 
+    {
+        if (node.right == null) {
+        	return node;
+        }
+        else {
+        	return max(node.right);
+        }
+    }
+        
+    
+    // Retorna valor próximo, em ordem
+    public Node successor(Node node) 
+    {
+        if (node == null) {
+        	return null;
+        }
+            
+        if (node.right != null) {
+            return min(node.right);
+        }
+        else 
+        {
+            Node p = node.parent;
+                
+            while (p != null && p.value < node.value) {
+                p = p.parent;
+            }
+                
+            return p;
+        }
+    }
+    
+    
+    // Retorna valor anterior, em ordem
+    public Node predecessor(Node node) 
+    {
+        if (node == null) {
+        	return null;
+        }
+        
+        if (node.left != null) {
+            return max(node.left);
+        }
+        else 
+        {
+            Node p = node.parent;
+            
+            while (p != null && p.value > node.value) {
+                p = p.parent;
+            }
+            
+            return p;
+        }
+    }
+
+
     // Adiciona novo nó
     public void add(int newValue) 
     {   
@@ -105,7 +251,7 @@ public class BST
     		return remove(node);
     	}
     }
-    
+    // Recursivo
     private Node remove(Node node) 
     {
         if (node.left == null && node.right == null) 
@@ -188,149 +334,5 @@ public class BST
         
         return node;
     }
-
-    
-
-    // Retorna referencia para o nó pesquisado
-    public Node search(int key) 
-    {    
-        Node p = root;
-            
-        while (p != null) 
-        {   
-            if (p.value == key) {
-            	return p;
-            }
-            
-            if (key < p.value) {
-            	p = p.left;
-            }
-            
-            if (key > p.value) {
-            	p = p.right;
-            }
-        }
-            
-        return null;
-    }
-    
-    
-    // Exibe elementos ordenados
-    public void sortInOrder() {
-        sortInOrder( root );
-        System.out.println();
-    }
-    // Recursivo
-    private void sortInOrder(Node node) 
-    {
-        if (node != null) {
-            sortInOrder(node.left);
-            System.out.print(node.value + " ");
-            sortInOrder(node.right);
-        }
-    }
-    
-    
-    // Retorna menor elemento
-    public Node min() 
-    {
-        if (isEmpty()) {
-        	return null;
-        }
-        return min(root);
-    }
-    // Recursivo
-    private Node min(Node node) 
-    {
-        if (node.left == null) {
-        	return node;
-        }
-        else {
-        	return min(node.left);
-        }
-    }
-
-    
-    // Retorna maior elemento
-    public Node max() 
-    {
-        if (isEmpty()) {
-        	return null;
-        }
-        return max(root);
-    }
-    // Recursivo
-    private Node max(Node node) 
-    {
-        if (node.right == null) {
-        	return node;
-        }
-        else {
-        	return max(node.right);
-        }
-    }
-    
-    
-    // Retorna altura
-    public int height() {
-        return height(root);
-    }
-    // Recursiva
-    private int height(Node node) 
-    {
-        if(node == null) {
-        	return -1;
-        }
-        else return 1 + Math.max(height(node.left), height(node.right));
-    }
-    
-    
-    // Retorna valor próximo, em ordem
-    public Node successor(Node node) 
-    {
-        if (node == null) {
-        	return null;
-        }
-            
-        if (node.right != null) {
-            return min(node.right);
-        }
-        else 
-        {
-            Node p = node.parent;
-                
-            while (p != null && p.value < node.value) {
-                p = p.parent;
-            }
-                
-            return p;
-        }
-    }
-    
-    
-    // Retorna valor anterior, em ordem
-    public Node predecessor(Node node) 
-    {
-        if (node == null) {
-        	return null;
-        }
-        
-        if (node.left != null) {
-            return max(node.left);
-        }
-        else 
-        {
-            Node p = node.parent;
-            
-            while (p != null && p.value > node.value) {
-                p = p.parent;
-            }
-            
-            return p;
-        }
-    }
-
-
-
     
 }

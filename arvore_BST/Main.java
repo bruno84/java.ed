@@ -21,6 +21,8 @@ public class Main
 		
 		System.out.println( "height: " + arvore1.height() );
 		
+		System.out.println( "nodesComplete: " + arvore1.nodesComplete( arvore1.height() ) );
+		
 		System.out.println( "successor: " + arvore1.successor( arvore1.search(30) ).value );
 		
 		System.out.println( "predecessor: " + arvore1.predecessor( arvore1.search(30) ).value );

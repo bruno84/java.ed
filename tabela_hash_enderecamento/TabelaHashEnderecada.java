@@ -1,6 +1,5 @@
 package tabela_hash_enderecamento;
 
-import java.util.ArrayList;
 
 import java_basico.Produto;
 
@@ -12,7 +11,7 @@ public class TabelaHashEnderecada
 	private Produto table[];		// vetor de Produtos
 	private float fatorCarga;
 	
-	@SuppressWarnings("unchecked")
+	// Construtor
 	public TabelaHashEnderecada() 
 	{
 		this.size = 0;
@@ -21,7 +20,7 @@ public class TabelaHashEnderecada
 		this.fatorCarga = 0.75f;
 	}
 	
-	@SuppressWarnings("unchecked")
+	// Construtor
 	public TabelaHashEnderecada(int capacity, float fatorCarga) 
 	{
 		this.size = 0;
@@ -31,18 +30,37 @@ public class TabelaHashEnderecada
 	}
 	
 	
+	// METODOS
+	
+	// Quantidade atual de elementos
+	public int getSize() {
+		return size;
+	}
+
+	// Capacidade de armazenar elementos
+	public int getCapacity() {
+		return capacity;
+	}
+
+	
+	// Quanto maior, menor a probabilidade de complexidade O(1)
+	public float getFatorCarga() {
+		return fatorCarga; // [0.0 .. 1.0]
+	} 
+	
+	
 	// Funcao de dispersao
 	public int hash(int key) {
 		return key % this.capacity;
 	}
 	
 	
+	// Expande vetor
 	private void resize()
 	{
 		System.out.println("resize!");
 		Produto[] tableOld = table;	
-		
-		capacity = capacity * 2;
+		capacity = proxPrimo( capacity * 2 );
 		table = new Produto[capacity];
 		size = 0;
 		
@@ -53,6 +71,44 @@ public class TabelaHashEnderecada
         }
 	}
 	
+	
+	// Obtem número primo
+	private static int proxPrimo(int n)
+	{
+		int primo = n;
+		
+		while( ehPrimo(primo) == false ) {
+			primo++;
+		}
+		
+		return primo;
+	}
+	
+	
+	// Verifica se é primo
+	public static boolean ehPrimo(int n) 
+	{
+	    for(int i = 2; i < n; i++) {
+	        if(n % i == 0) {
+	            return false;
+	        }
+	    }
+	    return true;
+	}
+	
+	
+    // Exibe tabela
+    public void show() 
+    {
+        for (int i=0; i < capacity; i++) 
+        {
+            System.out.print( table[i] + " ");
+        }
+        System.out.println("\n");
+    }
+	
+	
+	// Adiciona elemento
 	public void add(int key, Produto produtoNovo) 
 	{
 		int hash;
@@ -81,6 +137,7 @@ public class TabelaHashEnderecada
 	}
 	
 
+	// Remove elemento
     public Produto remove(int key) 
     {
         int hash;
@@ -106,6 +163,7 @@ public class TabelaHashEnderecada
     }  
 	
 	
+    // Pesquisa elemento
     public Produto search(int key) 
     {
         int hash;
@@ -129,26 +187,4 @@ public class TabelaHashEnderecada
         return null;
     }
 
-    
-    public void show() 
-    {
-        for (int i=0; i < capacity; i++) 
-        {
-            System.out.print( table[i] + " ");
-        }
-        System.out.println("\n");
-    }
-    
-    
-	public int getSize() {
-		return size;
-	}
-
-	public int getCapacity() {
-		return capacity;
-	}
-
-	public float getFatorCarga() {
-		return fatorCarga;
-	} 
 }
