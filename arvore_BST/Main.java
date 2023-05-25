@@ -13,29 +13,31 @@ public class Main
 		arvore1.add(50);
 		arvore1.add(20);
 		
-		arvore1.sortInOrder();
+		arvore1.print();
 		
-		System.out.println( "min: " + arvore1.min().value );
+		arvore1.printInOrder();
 		
-		System.out.println( "max: " + arvore1.max().value );
+		System.out.println( "min: " + arvore1.min().key );
+		
+		System.out.println( "max: " + arvore1.max().key );
 		
 		System.out.println( "height: " + arvore1.height() );
 		
 		System.out.println( "nodesComplete: " + arvore1.nodesComplete( arvore1.height() ) );
 		
-		System.out.println( "successor: " + arvore1.successor( arvore1.search(30) ).value );
+		System.out.println( "successor: " + arvore1.successor( arvore1.search(30) ).key );
 		
-		System.out.println( "predecessor: " + arvore1.predecessor( arvore1.search(30) ).value );
+		System.out.println( "predecessor: " + arvore1.predecessor( arvore1.search(30) ).key );
 		
-		System.out.println( "search: " + arvore1.search(30).value );
-		
-		System.out.println( "getSize: " + arvore1.getSize() );
-		
-		System.out.println( "remove: " + arvore1.remove(30).value );
+		System.out.println( "search: " + arvore1.search(30).key );
 		
 		System.out.println( "getSize: " + arvore1.getSize() );
 		
-		arvore1.sortInOrder();
+		System.out.println( "remove: " + arvore1.remove(30).key );
+		
+		System.out.println( "getSize: " + arvore1.getSize() );
+		
+		arvore1.printInOrder();
 	}
 
 }

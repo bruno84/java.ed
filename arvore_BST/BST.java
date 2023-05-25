@@ -8,15 +8,15 @@ public class BST
 	class Node
 	{    
 		// Atributos
-	    int value;
+	    int key;
 	    Node left;		// filho da esquerda
 	    Node right;		// filho da direita
 	    Node parent;	// pai
 	    
 	    // Construtor
-	    Node(int v) 
+	    Node(int pkey) 
 	    {
-	        this.value = v;
+	        this.key = pkey;
 	        this.left = null;
 	        this.right = null;
 	        this.parent = null;
@@ -69,21 +69,21 @@ public class BST
 	
     
     // Retorna referencia para o nó pesquisado
-    public Node search(int key) 
+    public Node search(int pkey) 
     {    
         Node p = root;
             
         while (p != null) 
         {   
-            if (p.value == key) {
+            if (p.key == pkey) {
             	return p;
             }
             
-            if (key < p.value) {
+            if (pkey < p.key) {
             	p = p.left;
             }
             
-            if (key > p.value) {
+            if (pkey > p.key) {
             	p = p.right;
             }
         }
@@ -92,18 +92,47 @@ public class BST
     }
     
     
+    // Exibe elementos em largura
+	public void print() 
+	{
+		System.out.println(root.key);
+		String tab = "  ";
+		print(root.left,  tab, true);
+		print(root.right, tab, false);
+		System.out.println();
+	}
+	// Recursivo
+	private void print(Node node, String tab, boolean isEsq) 
+	{
+		if (node == null)
+			return;
+
+		if (isEsq) {
+			System.out.print(tab + "E:");
+			tab += "|  ";
+		} else {
+			System.out.print(tab + "D:");
+			tab += "   ";
+		}
+
+		System.out.println(node.key);
+		print(node.left,  tab, true);
+		print(node.right, tab, false);
+	}
+    
+    
     // Exibe elementos ordenados
-    public void sortInOrder() {
-        sortInOrder( root );
+    public void printInOrder() {
+    	printInOrder( root );
         System.out.println();
     }
     // Recursivo
-    private void sortInOrder(Node node) 
+    private void printInOrder(Node node) 
     {
         if (node != null) {
-            sortInOrder(node.left);
-            System.out.print(node.value + " ");
-            sortInOrder(node.right);
+        	printInOrder(node.left);
+            System.out.print(node.key + " ");
+            printInOrder(node.right);
         }
     }
     
@@ -162,7 +191,7 @@ public class BST
         {
             Node p = node.parent;
                 
-            while (p != null && p.value < node.value) {
+            while (p != null && p.key < node.key) {
                 p = p.parent;
             }
                 
@@ -185,7 +214,7 @@ public class BST
         {
             Node p = node.parent;
             
-            while (p != null && p.value > node.value) {
+            while (p != null && p.key > node.key) {
                 p = p.parent;
             }
             
@@ -195,13 +224,13 @@ public class BST
 
 
     // Adiciona novo nó
-    public void add(int newValue) 
+    public void add(int newKey) 
     {   
     	size++;
     	
         if ( isEmpty() ) 
         {
-        	root = new Node(newValue);
+        	root = new Node(newKey);
         } 
         else 
         {
@@ -209,11 +238,11 @@ public class BST
                 
             while ( p != null ) 
             {
-                if (newValue < p.value) 
+                if (newKey < p.key) 
                 {
                     if (p.left == null) 
                     { 
-                        Node newNode = new Node(newValue);
+                        Node newNode = new Node(newKey);
                         p.left = newNode;
                         newNode.parent = p;
                         return;
@@ -225,7 +254,7 @@ public class BST
                 {
                     if (p.right == null) 
                     {
-                        Node newNode = new Node(newValue);
+                        Node newNode = new Node(newKey);
                         p.right = newNode;
                         newNode.parent = p;
                         return;
@@ -239,9 +268,9 @@ public class BST
     
     
     // Remove um nó
-    public Node remove(int key) 
+    public Node remove(int pkey) 
     {
-    	Node node = search(key);
+    	Node node = search(pkey);
     	
     	if(node == null) {
     		return null;
@@ -266,7 +295,7 @@ public class BST
             else 
             {
             	// Pai aponta para null (esquerda ou direita, conforme chave)
-                if (node.value < node.parent.value) {
+                if (node.key < node.parent.key) {
                     node.parent.left = null;
                 }
                 else {
@@ -290,7 +319,7 @@ public class BST
                 node.left.parent = node.parent;
                 
                 // Avô aponta para neto (esquerda ou direita, conforme chave)
-                if (node.value < node.parent.value) {
+                if (node.key < node.parent.key) {
                     node.parent.left = node.left;
                 }
                 else {
@@ -314,7 +343,7 @@ public class BST
                 node.right.parent = node.parent;
                 
                 // Avô aponta para neto (esquerda ou direita, conforme chave)
-                if (node.value < node.parent.value) {
+                if (node.key < node.parent.key) {
                     node.parent.left = node.right;
                 }
                 else {
@@ -327,7 +356,7 @@ public class BST
             // caso 3: tem dois filhos
         	// O nó a ser removido recebe o valor do sucessor
             Node successor = successor(node);
-            node.value = successor.value;
+            node.key = successor.key;
             // Executo novamente a remoção para deletar o sucessor que está duplicado (que será caso 1 ou 2)
             remove(successor);
         }
