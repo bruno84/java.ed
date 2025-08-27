@@ -94,52 +94,71 @@ public class MainEx02Operadores
 		// Operadores de bitwise
 		//--------------------------------------------------------
 		int a = 5; 								// 0101 
-		int b = 7; 								// 0111 				
-									
-		System.out.println("a     = " + exibirBits(4, a) ); 
-		System.out.println("b     = " + exibirBits(4, b) ); 
-		System.out.println("a | b = " + exibirBits(4, a | b) + "\n"); 	// 0111
+		int b = 7; 								// 0111
+		int r;
 		
-		System.out.println("a     = " + exibirBits(4, a) ); 
-		System.out.println("b     = " + exibirBits(4, b) ); 
-		System.out.println("a & b = " + exibirBits(4, a & b) + "\n"); 	// 0101
+		r = a & b;
+		System.out.println("a     = " + exibirBits(32, a) ); 		// ...00000101
+		System.out.println("b     = " + exibirBits(32, b) ); 		// ...00000111
+		System.out.println("a & b = " + exibirBits(32, r) + "\n"); 	// ...00000101	AND
 		
-		System.out.println("a     = " + exibirBits(4, a) ); 
-		System.out.println("b     = " + exibirBits(4, b) ); 
-		System.out.println("a ^ b = " + exibirBits(4, a ^ b) + "\n"); 	// 0010		XOR
+		r = a | b;
+		System.out.println("a     = " + exibirBits(32, a) ); 		// ...00000101
+		System.out.println("b     = " + exibirBits(32, b) ); 		// ...00000111 
+		System.out.println("a | b = " + exibirBits(32, r) + "\n"); 	// ...00000111	OR
 		
-		System.out.println(" a = " + exibirBits(32,  a) ); 
-		System.out.println("~a = " + exibirBits(32, ~a) + "\n"); 		// // 1010
+		r = a ^ b;
+		System.out.println("a     = " + exibirBits(32, a) ); 		// ...00000101
+		System.out.println("b     = " + exibirBits(32, b) ); 		// ...00000111
+		System.out.println("a ^ b = " + exibirBits(32, r) + "\n"); 	// ...00000010	XOR
+		
+		r = ~a;
+		System.out.println(" a = " + exibirBits(32, a) ); 			// ...00000101
+		System.out.println("~a = " + exibirBits(32, r) + "\n"); 	// ...11111010	NOT
 		
 		
-		int c = 64; 							
+		a = 8; 							
 		
-		System.out.println("c       = " + exibirBits(8, c) ); 		// 01000000 
-		System.out.println("c << 1  = " + exibirBits(8, c << 1) ); 	// 10000000		Signed Left Shift
+		r = a << 1;
+		System.out.println("a       = " + exibirBits(32, a) ); 	// ...00001000
+		System.out.println("a << 1  = " + exibirBits(32, r) ); 	// ...00010000	Signed Left Shift
+		System.out.println(r);									// 16
 		System.out.println();
 		
-		System.out.println("c       = " + exibirBits(8, c) ); 		// 01000000 
-		System.out.println("c >> 1  = " + exibirBits(8, c >> 1) ); 	// 00100000		Signed Right Shift 
+		r = a >> 1;
+		System.out.println("a       = " + exibirBits(32, a) ); 	// ...00001000
+		System.out.println("a >> 1  = " + exibirBits(32, r) ); 	// ...00000100	Signed Right Shift 
+		System.out.println(r);									// 4
 		System.out.println();	
 		
-		System.out.println("c       = " + exibirBits(8, c) ); 			// 01000000 
-		System.out.println("c >>> 1 = " + exibirBits(8, c >>> 1) ); 	// 00100000		Unsigned Right Shift
+		r = a >>> 1;
+		System.out.println("a       = " + exibirBits(32, a) ); 	// ...00001000 
+		System.out.println("a >>> 1 = " + exibirBits(32, r) ); 	// ...00000100	Unsigned Right Shift
+		System.out.println(r);									// 4
 		System.out.println("\n");
 		
-		c = -64; 
 		
-		System.out.println("c       = " + exibirBits(32, c) ); 		// 11111111 11111111 11111111 11000000
-		System.out.println("c << 1  = " + exibirBits(32, c << 1) ); 	// 11111111 11111111 11111111 10000000	Signed Left Shift
-		System.out.println();
+		a = -64; 
 		
-		System.out.println("c       = " + exibirBits(32, c) ); 		// 11111111 11111111 11111111 11000000 
-		System.out.println("c >> 1  = " + exibirBits(32, c >> 1) ); 	// 11111111 11111111 11111111 11100000	Signed Right Shift 
-		System.out.println();
+		r = a << 1;
+		System.out.println("a       = " + exibirBits(32, a) );	// 11111111111111111111111111000000
+		System.out.println("a << 1  = " + exibirBits(32, r) ); 	// 11111111111111111111111110000000	Signed Left Shift
+		System.out.println(r);									// -128
 		
-		System.out.println("c       = " + exibirBits(32, c) ); 		 // 11111111 11111111 11111111 11000000 
-		System.out.println("c >>> 1 = " + exibirBits(32, c >>> 1) ); // 01111111 11111111 11111111 11100000  Unsigned Right Shift 
-		System.out.println();
+		r = a >> 1;
+		System.out.println("a       = " + exibirBits(32, a) );	// 11111111111111111111111111000000 
+		System.out.println("a >> 1  = " + exibirBits(32, r) );	// 11111111111111111111111111100000	Signed Right Shift 
+		System.out.println(r);									// -32
+		System.out.println();									// OBS: se entrada negativa, retorna número negativo, 
+																// 		pois conserva o bit mais significativo (sinal)
 		
+		r = a >>> 1;
+		System.out.println("a       = " + exibirBits(32, a) ); 	// 11111111111111111111111111000000 
+		System.out.println("a >>> 1 = " + exibirBits(32, r) );	// 01111111111111111111111111100000  Unsigned Right Shift 
+		System.out.println(r);									// 2147483616
+		System.out.println();									// OBS: se entrada negativa, retorna número positivo, 
+																// 		pois nao conserva o bit mais significativo (sinal) 
+				
 		// ATENCAO: NAO EXISTE <<<	Unsigned Left Shift = Signed Left Shift
 				
 	}
