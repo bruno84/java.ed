@@ -6,7 +6,7 @@ public class MainEx02Operadores
 	public static void main(String[] args) 
 	{
 		//--------------------------------------------------------
-		// Operadores aritm�ticos
+		// Operadores aritmeticos
 		//--------------------------------------------------------
 	    int int1 = 11;
 		int int2 = 4;
@@ -49,7 +49,7 @@ public class MainEx02Operadores
 	    System.out.println("Resto: " + resultFloat + "\t\t Atencao! \n");
 	    
 		//--------------------------------------------------------
-		// Operadores l�gicos
+		// Operadores logicos
 		//--------------------------------------------------------
 		boolean A = true; 
 		boolean B = false; 
@@ -73,7 +73,7 @@ public class MainEx02Operadores
 	    	System.out.println("Diferentes"); 
 	    } 
 
-	    if(pai == mae) {					// CUIDADO! N�O USAR APENAS = 
+	    if(pai == mae) {					// CUIDADO! NAO USAR APENAS = 
 	    	System.out.println("Iguais"); 
 	    } 
 	        
@@ -149,14 +149,14 @@ public class MainEx02Operadores
 		System.out.println("a       = " + exibirBits(32, a) );	// 11111111111111111111111111000000 
 		System.out.println("a >> 1  = " + exibirBits(32, r) );	// 11111111111111111111111111100000	Signed Right Shift 
 		System.out.println(r);									// -32
-		System.out.println();									// OBS: se entrada negativa, retorna número negativo, 
+		System.out.println();									// OBS: se entrada negativa, retorna numero negativo, 
 																// 		pois conserva o bit mais significativo (sinal)
 		
 		r = a >>> 1;
 		System.out.println("a       = " + exibirBits(32, a) ); 	// 11111111111111111111111111000000 
 		System.out.println("a >>> 1 = " + exibirBits(32, r) );	// 01111111111111111111111111100000  Unsigned Right Shift 
 		System.out.println(r);									// 2147483616
-		System.out.println();									// OBS: se entrada negativa, retorna número positivo, 
+		System.out.println();									// OBS: se entrada negativa, retorna numero positivo, 
 																// 		pois nao conserva o bit mais significativo (sinal) 
 				
 		// ATENCAO: NAO EXISTE <<<	Unsigned Left Shift = Signed Left Shift
