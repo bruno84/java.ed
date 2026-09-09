@@ -21,18 +21,18 @@ public class MainEx13GenericClass
 			array = (E[]) new Object[max];
 		}
 		
-		public void empilhar(E elem) throws Error
+		public void empilhar(E elem)
 		{
 			if( topo < max-1 ) {
 				topo = topo + 1;
 				array[topo] = elem;
 			}
 			else {
-				throw new Error();
+				throw new MyException("Pilha cheia");
 			}
 		}
 		
-		public E desempilhar() throws Error
+		public E desempilhar()
 		{
 			E valor;
 			
@@ -41,7 +41,7 @@ public class MainEx13GenericClass
 				topo = topo - 1;
 			}
 			else {
-				throw new Error();
+				throw new MyException("Pilha vazia");
 			}
 			
 			return valor;
