@@ -1,12 +1,12 @@
 package java_basico;
 
-public class MyException extends RuntimeException 
+public class MyExceptionChecked extends Exception
 {
 	private static final long serialVersionUID = 4652958143051993454L;
 
 	private String description = "";
-	
-	public MyException(String description)
+
+	public MyExceptionChecked(String description)
 	{
         super(description);
         

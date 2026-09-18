@@ -1,6 +1,6 @@
 package pilhas;
 
-import java_basico.MyException;
+import java_basico.MyExceptionUnchecked;
 
 /**
  * Objetivo: Pilha sobre Lista simplesmente encadeada
@@ -56,13 +56,13 @@ public class MyStackList <T> implements MyInterfaceStack <T>
 	}
 
 	@Override
-	public void push(T dado) throws MyException 
+	public void push(T dado) throws MyExceptionUnchecked
 	{
 		// Adiciona no inicio
 	    Node novo = new Node(dado);    
 
 	    if( isFull() ) {
-	    	throw new MyException("Cheio!");
+	    	throw new MyExceptionUnchecked("Cheio!");
 	    }
 	    
 	    // verifica se lista está vazia
@@ -83,14 +83,14 @@ public class MyStackList <T> implements MyInterfaceStack <T>
 
 
 	@Override
-	public T pop() throws MyException 
+	public T pop() throws MyExceptionUnchecked
 	{
 		// Remove no inicio
 		Node p = head;
 		T dadoRetorno = null;
 
 		if( isEmpty() ) {
-		    throw new MyException("Vazio!");
+		    throw new MyExceptionUnchecked("Vazio!");
 	    }
 		else
 		{
@@ -117,7 +117,7 @@ public class MyStackList <T> implements MyInterfaceStack <T>
 
 
 	@Override
-	public T peek() throws MyException 
+	public T peek() throws MyExceptionUnchecked
 	{
 		// Consulta no inicio
 		if( head == null ) {

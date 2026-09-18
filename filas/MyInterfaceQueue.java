@@ -1,13 +1,13 @@
 package filas;
 
-import java_basico.MyException;
+import java_basico.MyExceptionUnchecked;
 
 public interface MyInterfaceQueue <T>
 {
-    void add(T number) throws MyException;
-    T remove() throws MyException;
+    void add(T number) throws MyExceptionUnchecked;
+    T remove() throws MyExceptionUnchecked;
     
-    T peek() throws MyException;	// consulta o início (primeiro elemento)
+    T peek() throws MyExceptionUnchecked;	// consulta o início (primeiro elemento)
     
     boolean isEmpty();
     boolean isFull();

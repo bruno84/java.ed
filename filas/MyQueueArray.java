@@ -1,6 +1,6 @@
 package filas;
 
-import java_basico.MyException;
+import java_basico.MyExceptionUnchecked;
 
 public class MyQueueArray <T> implements MyInterfaceQueue <T>
 {
@@ -18,14 +18,14 @@ public class MyQueueArray <T> implements MyInterfaceQueue <T>
 	}
 
 	
-	public void add(T valor) throws MyException
+	public void add(T valor) throws MyExceptionUnchecked
 	{
 		System.out.println("\nInserir...\n");
 
 	    int lastTemp = (last + 1) % sizeMax;
 
 	    if (lastTemp == first) {
-	       throw new MyException( "\nERRO: fila cheia["+valor+"]!!!\n" );
+	       throw new MyExceptionUnchecked( "\nERRO: fila cheia["+valor+"]!!!\n" );
 	    }
 
 	    last = lastTemp;
@@ -39,10 +39,10 @@ public class MyQueueArray <T> implements MyInterfaceQueue <T>
 
 
 	@SuppressWarnings("unchecked")
-	public T remove() throws MyException
+	public T remove() throws MyExceptionUnchecked
 	{
 	    if (first == -1) {
-	    	throw new MyException( "\nERRO: fila vazia!!!\n" );
+	    	throw new MyExceptionUnchecked( "\nERRO: fila vazia!!!\n" );
 	    }
 
         T retorno = (T) array[first];
@@ -63,14 +63,14 @@ public class MyQueueArray <T> implements MyInterfaceQueue <T>
 
 
 	@SuppressWarnings("unchecked")
-	public T peek() throws MyException
+	public T peek() throws MyExceptionUnchecked
 	{
 		System.out.println("\nConsultar elemento no inicio...\n");
 
 		T retorno;
 		
 	    if(first == -1) {
-	        throw new MyException( "\nERRO: fila vazia!!!\n" );
+	        throw new MyExceptionUnchecked( "\nERRO: fila vazia!!!\n" );
 	    }
 	    
 	    retorno = (T) array[ first ];

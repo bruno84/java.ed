@@ -1,13 +1,13 @@
 package pilhas;
 
-import java_basico.MyException;
+import java_basico.MyExceptionUnchecked;
 
 public interface MyInterfaceStack <T>
 {
-    void push(T number) throws MyException; 	// empilhar
-    T pop() throws MyException;					// desempilhar
+    void push(T number) throws MyExceptionUnchecked; 	// empilhar
+    T pop() throws MyExceptionUnchecked;					// desempilhar
     
-    T peek() throws MyException;				// consultar (topo)
+    T peek() throws MyExceptionUnchecked;				// consultar (topo)
     
     boolean isEmpty();
     boolean isFull();

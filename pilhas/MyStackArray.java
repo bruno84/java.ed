@@ -1,6 +1,6 @@
 package pilhas;
 
-import java_basico.MyException;
+import java_basico.MyExceptionUnchecked;
 
 public class MyStackArray <T> implements MyInterfaceStack <T>
 {
@@ -16,12 +16,12 @@ public class MyStackArray <T> implements MyInterfaceStack <T>
 	}
 
 	
-	public void push(T valor) throws MyException	
+	public void push(T valor) throws MyExceptionUnchecked
 	{
 		System.out.println("\nEmpilhar...\n");
 
 	    if( isFull() ) {
-	        throw new MyException("\nERRO: pilha cheia [valor="+valor+"]!!!\n" );
+	        throw new MyExceptionUnchecked("\nERRO: pilha cheia [valor="+valor+"]!!!\n" );
 	    }
 
 	    top = top + 1;
@@ -30,12 +30,12 @@ public class MyStackArray <T> implements MyInterfaceStack <T>
 
 	
 	@SuppressWarnings("unchecked")
-	public T pop() throws MyException
+	public T pop() throws MyExceptionUnchecked
 	{
 		System.out.println("\nDesempilhar...\n");
 
 	    if( isEmpty() ) {
-	        throw new MyException( "\nERRO: pilha vazia!!!\n" );
+	        throw new MyExceptionUnchecked( "\nERRO: pilha vazia!!!\n" );
 	    }
 
         T retorno = (T) array[ top ];
@@ -46,12 +46,12 @@ public class MyStackArray <T> implements MyInterfaceStack <T>
 
 	
 	@SuppressWarnings("unchecked")
-	public T peek() throws MyException
+	public T peek() throws MyExceptionUnchecked
 	{
 		System.out.println("\nConsultar o Topo...\n");
 
 	    if( isEmpty() ) {
-	        throw new MyException( "\nERRO: pilha vazia!!!\n" );
+	        throw new MyExceptionUnchecked( "\nERRO: pilha vazia!!!\n" );
 	    }
 	    
 	    T retorno = (T) array[ top ];

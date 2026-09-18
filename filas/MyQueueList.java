@@ -1,6 +1,6 @@
 package filas;
 
-import java_basico.MyException;
+import java_basico.MyExceptionUnchecked;
 
 /**
  * Objetivo: Fila sobre Lista simplesmente encadeada
@@ -57,11 +57,11 @@ public class MyQueueList <T> implements MyInterfaceQueue <T>
 		
 
 	@Override
-	public void add(T dado) throws MyException 
+	public void add(T dado) throws MyExceptionUnchecked
 	{
 		// Adicionar no fim
 	    if( isFull() ) {
-	    	throw new MyException("Cheio!");
+	    	throw new MyExceptionUnchecked("Cheio!");
 	    }
 	    
 	    Node novo = new Node(dado);    
@@ -83,14 +83,14 @@ public class MyQueueList <T> implements MyInterfaceQueue <T>
 
 
 	@Override
-	public T remove() throws MyException 
+	public T remove() throws MyExceptionUnchecked
 	{
 		// Remover do inicio
 		Node p = head;
 		T dadoRetorno = null;
 
 		if( isEmpty() ) {
-			throw new MyException("Vazio!");
+			throw new MyExceptionUnchecked("Vazio!");
 	    }
 		else
 		{
@@ -117,7 +117,7 @@ public class MyQueueList <T> implements MyInterfaceQueue <T>
 
 
 	@Override
-	public T peek() throws MyException 
+	public T peek() throws MyExceptionUnchecked
 	{
 		// Consulta do inicio
 		if( head == null ) {
