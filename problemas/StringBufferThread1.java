@@ -9,8 +9,8 @@ public class StringBufferThread1
 {
 	public static void main(String[] args) 
 	{
-        //StringBuffer buffer = new StringBuffer();
-        StringBuilder buffer = new StringBuilder(); // Resultado imprevisível
+        StringBuffer buffer = new StringBuffer();
+        //StringBuilder buffer = new StringBuilder(); // Resultado imprevisível
 
         Thread t1 = new Thread(() -> {
             for (int i = 0; i < 100_000; i++) {
